@@ -1,12 +1,8 @@
 package rocketseat.com.passin.domain.checkin;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import rocketseat.com.passin.domain.attendee.Attendee;
-
+import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,10 +17,13 @@ public class CheckIn {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Getter
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @OneToOne
     @JoinColumn(name = "attendee_id", nullable = false)
     private Attendee attendee;
+
+
 }
