@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import rocketseat.com.dto.attendee.AttendeeBadgeDTO;
 import rocketseat.com.dto.attendee.AttendeeBadgeResponseDTO;
 import rocketseat.com.passin.services.AttendeeService;
-import rocketseat.com.passin.services.CheckInService;
 
 @RestController
 @RequestMapping("/attendees")
@@ -20,8 +18,11 @@ public class AttendeeController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/{attendeeId}/badge")
-    public void registerCheckIn(@PathVariable String attendeeId){
+    @PostMapping("/{attendeeId}/check-in")
+    public ResponseEntity<Object> registerCheckIn(@PathVariable String attendeeId, UriComponentsBuilder uriComponentsBuilder){
         this.attendeeService.checkInAttendee(attendeeId);
+        var uri = uriComponentsBuilder.path("/attendees/{attendeeId}/badge").buildAndExpand(attendeeId).toUri();
+
+        return ResponseEntity.created(uri).build();
     }
 }

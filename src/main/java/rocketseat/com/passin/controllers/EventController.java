@@ -15,7 +15,6 @@ import rocketseat.com.dto.attendee.AttendeesListResponseDTO;
 import rocketseat.com.dto.event.EventIdDTO;
 import rocketseat.com.dto.event.EventRequestDTO;
 import rocketseat.com.dto.event.EventResponseDTO;
-import rocketseat.com.passin.domain.event.exceptions.EventNotFoundException;
 import rocketseat.com.passin.services.AttendeeService;
 import rocketseat.com.passin.services.EventService;
 
